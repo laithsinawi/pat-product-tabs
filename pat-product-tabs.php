@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: PAT Product Tabs for WooCommerce
- * Plugin URI: https://wordpress.org/plugins/pat-product-tabs-for-woocommerce/
+ * Plugin URI: https://wordpress.org/plugins/pat-product-tabs/
  * Description: Add unique, per-product custom tabs to WooCommerce product pages.
  * Version: 1.2.1
  * Author: Price Action Tools
  * Author URI: https://profiles.wordpress.org/laith3/
  * License: GPL-2.0-or-later
- * Text Domain: pat-product-tabs-for-woocommerce
+ * Text Domain: pat-product-tabs
 */
 
 if (!defined('ABSPATH')) {

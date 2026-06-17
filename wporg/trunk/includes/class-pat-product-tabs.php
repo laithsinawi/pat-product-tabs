@@ -67,14 +67,14 @@ final class PAT_Product_Tabs {
         }
 
         echo '<div class="notice notice-warning"><p>';
-        echo esc_html__('PAT Product Tabs for WooCommerce requires WooCommerce to be active. The plugin is loaded, but tab fields and frontend tabs are disabled until WooCommerce is available.', 'pat-product-tabs-for-woocommerce');
+        echo esc_html__('PAT Product Tabs for WooCommerce requires WooCommerce to be active. The plugin is loaded, but tab fields and frontend tabs are disabled until WooCommerce is available.', 'pat-product-tabs');
         echo '</p></div>';
     }
 
     public function register_metabox(): void {
         add_meta_box(
             'pat-product-tabs-metabox',
-            __('Product Tabs', 'pat-product-tabs-for-woocommerce'),
+            __('Product Tabs', 'pat-product-tabs'),
             [$this, 'render_metabox'],
             'product',
             'normal',
@@ -88,19 +88,19 @@ final class PAT_Product_Tabs {
         $tabs = $this->get_tabs_for_editor($post->ID);
         ?>
         <p>
-            <?php esc_html_e('Add only the tabs this product needs. Tabs are ordered by the numeric order field, and only tabs with content are shown on the frontend.', 'pat-product-tabs-for-woocommerce'); ?>
+            <?php esc_html_e('Add only the tabs this product needs. Tabs are ordered by the numeric order field, and only tabs with content are shown on the frontend.', 'pat-product-tabs'); ?>
         </p>
         <div id="pat-product-tabs-repeater">
             <table class="widefat striped" style="margin-top: 12px;">
                 <thead>
                     <tr>
                         <th style="width: 36px;"></th>
-                        <th style="width: 110px;"><?php esc_html_e('Move', 'pat-product-tabs-for-woocommerce'); ?></th>
-                        <th style="width: 80px;"><?php esc_html_e('Enabled', 'pat-product-tabs-for-woocommerce'); ?></th>
-                        <th style="width: 160px;"><?php esc_html_e('Label', 'pat-product-tabs-for-woocommerce'); ?></th>
-                        <th style="width: 90px;"><?php esc_html_e('Order', 'pat-product-tabs-for-woocommerce'); ?></th>
-                        <th><?php esc_html_e('Content', 'pat-product-tabs-for-woocommerce'); ?></th>
-                        <th style="width: 70px;"><?php esc_html_e('Remove', 'pat-product-tabs-for-woocommerce'); ?></th>
+                        <th style="width: 110px;"><?php esc_html_e('Move', 'pat-product-tabs'); ?></th>
+                        <th style="width: 80px;"><?php esc_html_e('Enabled', 'pat-product-tabs'); ?></th>
+                        <th style="width: 160px;"><?php esc_html_e('Label', 'pat-product-tabs'); ?></th>
+                        <th style="width: 90px;"><?php esc_html_e('Order', 'pat-product-tabs'); ?></th>
+                        <th><?php esc_html_e('Content', 'pat-product-tabs'); ?></th>
+                        <th style="width: 70px;"><?php esc_html_e('Remove', 'pat-product-tabs'); ?></th>
                     </tr>
                 </thead>
                 <tbody id="pat-product-tabs-rows">
@@ -112,12 +112,12 @@ final class PAT_Product_Tabs {
 
             <p style="margin-top: 12px;">
                 <button type="button" class="button button-primary" id="pat-product-tabs-add">
-                    <?php esc_html_e('Add Tab', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Add Tab', 'pat-product-tabs'); ?>
                 </button>
             </p>
         </div>
         <p class="description" style="margin-top: 12px;">
-            <?php esc_html_e('Tip: drag rows to sort them, or edit the order field manually. Empty or disabled rows are ignored on the frontend.', 'pat-product-tabs-for-woocommerce'); ?>
+            <?php esc_html_e('Tip: drag rows to sort them, or edit the order field manually. Empty or disabled rows are ignored on the frontend.', 'pat-product-tabs'); ?>
         </p>
         <script type="text/template" id="pat-product-tabs-row-template">
             <?php echo $this->get_repeater_row_template(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -215,7 +215,7 @@ final class PAT_Product_Tabs {
             $tab_id = 'pat_product_tab_' . absint($tab_index);
 
             $tabs[$tab_id] = [
-                'title' => '' !== trim((string) $tab['label']) ? $tab['label'] : __('Product Tab', 'pat-product-tabs-for-woocommerce'),
+                'title' => '' !== trim((string) $tab['label']) ? $tab['label'] : __('Product Tab', 'pat-product-tabs'),
                 'priority' => (int) $tab['order'],
                 'callback' => [$this, 'render_product_tab'],
                 'content' => $tab['content'],
@@ -338,23 +338,23 @@ final class PAT_Product_Tabs {
         ?>
         <tr data-row-index="<?php echo esc_attr((string) $index); ?>" data-editor-id="<?php echo esc_attr($editor_id); ?>">
             <td class="pat-product-tabs-drag-cell">
-                <button type="button" class="pat-product-tabs-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'pat-product-tabs-for-woocommerce'); ?>">
+                <button type="button" class="pat-product-tabs-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'pat-product-tabs'); ?>">
                     <span class="dashicons dashicons-menu"></span>
                 </button>
             </td>
             <td>
                 <button type="button" class="button-link pat-product-tabs-move" data-pat-move-row="up">
-                    <?php esc_html_e('Up', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Up', 'pat-product-tabs'); ?>
                 </button>
                 <br>
                 <button type="button" class="button-link pat-product-tabs-move" data-pat-move-row="down">
-                    <?php esc_html_e('Down', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Down', 'pat-product-tabs'); ?>
                 </button>
             </td>
             <td>
                 <label>
                     <input type="checkbox" name="pat_product_tabs[<?php echo esc_attr((string) $index); ?>][enabled]" value="1" <?php checked($enabled); ?>>
-                    <?php esc_html_e('On', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('On', 'pat-product-tabs'); ?>
                 </label>
             </td>
             <td>
@@ -363,7 +363,7 @@ final class PAT_Product_Tabs {
                     class="widefat"
                     name="pat_product_tabs[<?php echo esc_attr((string) $index); ?>][label]"
                     value="<?php echo esc_attr($label); ?>"
-                    placeholder="<?php esc_attr_e('Tab label', 'pat-product-tabs-for-woocommerce'); ?>"
+                    placeholder="<?php esc_attr_e('Tab label', 'pat-product-tabs'); ?>"
                 >
             </td>
             <td>
@@ -386,7 +386,7 @@ final class PAT_Product_Tabs {
             </td>
             <td>
                 <button type="button" class="button-link-delete" data-pat-remove-row="1">
-                    <?php esc_html_e('Remove', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Remove', 'pat-product-tabs'); ?>
                 </button>
             </td>
         </tr>
@@ -398,23 +398,23 @@ final class PAT_Product_Tabs {
         ?>
         <tr data-row-index="__INDEX__" data-editor-id="pat_product_tabs___INDEX___content">
             <td class="pat-product-tabs-drag-cell">
-                <button type="button" class="pat-product-tabs-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'pat-product-tabs-for-woocommerce'); ?>">
+                <button type="button" class="pat-product-tabs-drag-handle" aria-label="<?php esc_attr_e('Drag to reorder', 'pat-product-tabs'); ?>">
                     <span class="dashicons dashicons-menu"></span>
                 </button>
             </td>
             <td>
                 <button type="button" class="button-link pat-product-tabs-move" data-pat-move-row="up">
-                    <?php esc_html_e('Up', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Up', 'pat-product-tabs'); ?>
                 </button>
                 <br>
                 <button type="button" class="button-link pat-product-tabs-move" data-pat-move-row="down">
-                    <?php esc_html_e('Down', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Down', 'pat-product-tabs'); ?>
                 </button>
             </td>
             <td>
                 <label>
                     <input type="checkbox" name="pat_product_tabs[__INDEX__][enabled]" value="1">
-                    <?php esc_html_e('On', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('On', 'pat-product-tabs'); ?>
                 </label>
             </td>
             <td>
@@ -423,7 +423,7 @@ final class PAT_Product_Tabs {
                     class="widefat"
                     name="pat_product_tabs[__INDEX__][label]"
                     value=""
-                    placeholder="<?php esc_attr_e('Tab label', 'pat-product-tabs-for-woocommerce'); ?>"
+                    placeholder="<?php esc_attr_e('Tab label', 'pat-product-tabs'); ?>"
                 >
             </td>
             <td>
@@ -446,7 +446,7 @@ final class PAT_Product_Tabs {
             </td>
             <td>
                 <button type="button" class="button-link-delete" data-pat-remove-row="1">
-                    <?php esc_html_e('Remove', 'pat-product-tabs-for-woocommerce'); ?>
+                    <?php esc_html_e('Remove', 'pat-product-tabs'); ?>
                 </button>
             </td>
         </tr>
