@@ -7,6 +7,8 @@ Requires PHP: 7.4
 Stable tag: 1.2.1
 License: GPL-2.0-or-later
 
+Per-product WooCommerce tabs with WYSIWYG content, ordering, and enable controls.
+
 == Description ==
 PAT Product Tabs for WooCommerce adds lightweight, per-product custom tabs to WooCommerce product pages.
 

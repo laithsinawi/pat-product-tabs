@@ -142,6 +142,7 @@ final class PAT_Product_Tabs {
             return;
         }
 
+        // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce-verified input is unslashed and sanitized field-by-field below.
         $incoming = isset($_POST['pat_product_tabs']) && is_array($_POST['pat_product_tabs'])
             ? wp_unslash($_POST['pat_product_tabs'])
             : [];
@@ -235,7 +236,7 @@ final class PAT_Product_Tabs {
             return;
         }
 
-        echo apply_filters('the_content', $tab['content']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo $tab['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sanitized on save.
     }
 
     private function get_tabs_for_editor(int $post_id): array {
