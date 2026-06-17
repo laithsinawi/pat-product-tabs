@@ -7,7 +7,7 @@
  * Author: Price Action Tools
  * Author URI: https://profiles.wordpress.org/laith3/
  * License: GPL-2.0-or-later
- * Text Domain: pat-product-tabs
+ * Text Domain: pat-product-tabs-for-woocommerce
 */
 
 if (!defined('ABSPATH')) {
